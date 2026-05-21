@@ -17,11 +17,13 @@ import time
 from selenium.webdriver.common.by import By
 
 
-# On main / bad-dev-pr the spec is identical; only the URL changes between
-# branches to reflect what production would look like if the PR were merged.
+# bad-dev-pr branch: spec is unchanged from main, but the URL points at the
+# Netlify deployment of the *broken* HTML (simulating what production looks
+# like if this dev PR is merged). All 6 tests fail with app-side fault
+# shapes — selectors and expected strings that exist only on the *clean* page.
 APP_URL = os.environ.get(
     "RCA_APP_URL",
-    "https://celadon-duckanoo-625c0b.netlify.app/",
+    "https://tranquil-custard-21c4b2.netlify.app/",
 )
 
 
