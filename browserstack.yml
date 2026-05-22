@@ -1,33 +1,35 @@
 userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
-# Route selenium sessions to the BrowserStack preprod hub. The local SDK
-# wrapper supports preprod/regression for smart selection, and the test
-# user (e.g. ruturajshinde_R3UcaC) is preprod-scoped, so we override the
-# default prod hub explicitly.
-hubHost: hub-preprod.bsstag.com
-
 # Static names — Smart Test Selection needs stable identifiers across runs.
-# No dates / day-of-week / incremental tokens (per smart-selection docs).
 # Shared project with the wdio sample so all bad-pr-causation builds
 # accumulate together on observability.
 projectName: bad-pr-causation-samples
 buildName: bad-pr-causation-pytest
+buildIdentifier: '#${BUILD_NUMBER}'
 
 platforms:
-  - os: Windows
-    osVersion: '10'
-    browserName: chrome
+  - os: OS X
+    osVersion: Sonoma
+    browserName: Chrome
     browserVersion: latest
+  - os: Windows
+    osVersion: '11'
+    browserName: Chrome
+    browserVersion: '120.0'
 
+framework: pytest
 parallelsPerPlatform: 1
+
 browserstackLocal: false
 
 # Logging captures for RCA evidence
 debug: true
 networkLogs: true
-consoleLogs: verbose
-video: true
+consoleLogs: info
+seleniumVersion: 4.22.0
+
+source: pytest:sample-sdk:v1.0
 
 # Test Observability is the surface that hosts AI RCA + related_prs
 testObservability: true
