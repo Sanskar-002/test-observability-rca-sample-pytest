@@ -1,7 +1,14 @@
 userName: ${BROWSERSTACK_USERNAME}
 accessKey: ${BROWSERSTACK_ACCESS_KEY}
 
+# Route selenium sessions to the BrowserStack preprod hub. The local SDK
+# wrapper supports preprod/regression for smart selection, and the test
+# user (e.g. ruturajshinde_R3UcaC) is preprod-scoped, so we override the
+# default prod hub explicitly.
+hubHost: hub-preprod.bsstag.com
+
 # Static names — Smart Test Selection needs stable identifiers across runs.
+# No dates / day-of-week / incremental tokens (per smart-selection docs).
 # Shared project with the wdio sample so all bad-pr-causation builds
 # accumulate together on observability.
 projectName: bad-pr-causation-samples
