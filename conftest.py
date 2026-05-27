@@ -1,3 +1,8 @@
+"""Pytest fixtures for the bad-pr-causation RCA sample.
+
+Provides the Selenium ``driver`` fixture, a ``wait`` helper, and the
+``app_url`` under test. Configuration is read from the environment.
+"""
 import os
 
 import pytest
