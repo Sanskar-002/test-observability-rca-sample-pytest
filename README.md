@@ -36,3 +36,8 @@ browserstack-sdk pytest tests/
 - `browserstack.yml` enables `runSmartSelection` and points at the JSON.
 - The `BROWSERSTACK_ORCHESTRATION_SMART_SELECTION_FEATURE_BRANCHES` env
   var must be set per run to indicate which feature branch is under test.
+
+## Notes
+
+- Builds appear under the `bad-pr-causation-samples` project on Test
+  Observability; each run registers a build and streams per-test events.
